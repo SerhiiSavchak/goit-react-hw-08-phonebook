@@ -3,8 +3,13 @@ import css from './ContactForm.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContactsList } from 'redux/selectors';
 import { ContactList } from 'components/ContactList/ContactList';
-
-import { getContacts, addContact } from '../../redux/operations';
+import { Filter } from 'components/Filter/Filter';
+import { Input, Button } from '@chakra-ui/react';
+import { useEffect } from 'react';
+import {
+  fetchContacts,
+  addContact,
+} from '../../redux/contacts/contactOperations';
 
 function ContactForm() {
   const [name, setName] = useState('');
@@ -12,19 +17,22 @@ function ContactForm() {
   const contacts = useSelector(getContactsList);
   const dispatch = useDispatch();
 
-  const addContacts = (name, number) => {
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  const addContacts = async (name, number) => {
     const allNames = contacts.map(contact => contact.name);
     const currentName = name;
     const currentNumber = number;
     if (!allNames.includes(currentName)) {
-      dispatch(
+      await dispatch(
         addContact({
           name: currentName,
-
           number: currentNumber,
         })
       );
-      dispatch(getContacts());
+      dispatch(fetchContacts());
     } else {
       alert(`${currentName} already added!  `);
     }
@@ -61,7 +69,7 @@ function ContactForm() {
       <form className={css.phonebookForm} onSubmit={onSubmitForm}>
         <label className={css.phonebookLabel}>
           Name
-          <input
+          <Input
             onChange={inputValue}
             className={css.phonebookInput}
             value={name}
@@ -74,7 +82,7 @@ function ContactForm() {
         </label>
         <label className={css.phonebookLabel}>
           Number
-          <input
+          <Input
             value={number}
             onChange={inputValue}
             className={css.phonebookInput}
@@ -85,10 +93,11 @@ function ContactForm() {
             required
           />
         </label>
-        <button className={css.phonebookBtn} type="submit">
+        <Button className={css.phonebookBtn} type="submit">
           Add contact
-        </button>
+        </Button>
       </form>
+      <Filter />
       <ContactList />
     </>
   );

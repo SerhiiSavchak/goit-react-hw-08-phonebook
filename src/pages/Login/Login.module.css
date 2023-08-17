@@ -1,0 +1,20 @@
+.loginForm {
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.loginLabel {
+  display: flex;
+  font-weight: 500;
+  font-size: 18px;
+  flex-direction: column;
+}
+.loginForm {
+}
+
+.navLink {
+}

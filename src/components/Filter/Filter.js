@@ -1,12 +1,15 @@
 import React from 'react';
 import css from './Filter.module.css';
 import { useDispatch } from 'react-redux';
-import { setFilter } from 'redux/filterSlice';
+import { setFilter } from 'redux/filter/filterSlice';
+import { Input } from '@chakra-ui/react';
 
 function Filter() {
   const dispatch = useDispatch();
   const inputValue = evt => {
     const value = evt.target.value;
+    console.log(value);
+
     dispatch(setFilter(value));
   };
 
@@ -15,12 +18,14 @@ function Filter() {
       <h2 className={css.filterTitle}>Contacts</h2>
       <label className={css.contactsLabel}>
         Find contacts by name
-        <input
+        <Input
+          size="medium"
+          width="300px"
           name="filter"
           className={css.contactsInput}
           onChange={inputValue}
           type="text"
-        ></input>
+        ></Input>
       </label>
     </>
   );
