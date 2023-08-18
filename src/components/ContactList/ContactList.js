@@ -1,5 +1,5 @@
 import css from './ContactList.module.css';
-import { useEffect } from 'react';
+
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { Audio } from 'react-loader-spinner';

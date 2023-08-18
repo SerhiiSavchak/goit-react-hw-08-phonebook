@@ -1,15 +1,19 @@
 import css from './Navigation.module.css';
 import { getIsLoggedIn } from 'redux/selectors';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/authOperations';
 
 function Navigation() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
 
   const onLogOutClick = () => {
+    console.log(isLoggedIn);
+
     dispatch(logOut());
+    navigate('/login');
   };
 
   return (
