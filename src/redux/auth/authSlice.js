@@ -30,7 +30,7 @@ const authSlice = createSlice({
         state.token = null;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = { ...action.payload };
+        state.user = action.payload;
         state.isLoggedIn = true;
       });
   },
