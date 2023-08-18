@@ -1,6 +1,8 @@
 .nav {
   display: flex;
   justify-content: space-between;
+  height: 40px;
+  align-items: center;
 }
 
 .navList {
@@ -10,4 +12,34 @@
 }
 
 .navItem {
+}
+
+.navWrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navText {
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 250 linear;
+  &:hover {
+    color: white;
+  }
+}
+
+.navBtn {
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 250 linear;
+  &:hover {
+    color: white;
+  }
+}
+
+.navAvatar {
+  width: 30px;
+  height: 30px;
 }

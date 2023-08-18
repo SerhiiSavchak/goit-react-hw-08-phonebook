@@ -1,9 +1,7 @@
 import css from './ContactList.module.css';
-
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { Audio } from 'react-loader-spinner';
-
 import {
   getContactsList,
   getFilter,

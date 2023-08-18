@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  z-index: 999;
+  width: 100%;
+  background: linear-gradient(to right, #00b4db, #0083b0);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 20px 35px;
+  position: fixed;
+}

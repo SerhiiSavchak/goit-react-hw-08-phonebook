@@ -1,4 +1,12 @@
+.homeSection {
+  padding: 200px 0px;
+}
+
 .homeTitle {
-  font-size: 22px;
+  text-align: center;
+  width: 800px;
+  font-size: 56px;
+
   font-weight: 500;
+  margin: 0 auto;
 }

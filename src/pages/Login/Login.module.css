@@ -1,3 +1,7 @@
+.loginSection {
+  padding: 200px 0px;
+}
+
 .loginForm {
   display: flex;
   width: 300px;

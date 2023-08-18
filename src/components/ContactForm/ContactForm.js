@@ -64,12 +64,13 @@ function ContactForm() {
   };
 
   return (
-    <>
+    <section className={css.phonebookSection}>
       <h2 className={css.phonebookTopTitle}>Phonebook</h2>
       <form className={css.phonebookForm} onSubmit={onSubmitForm}>
         <label className={css.phonebookLabel}>
           Name
           <Input
+            width="100%"
             onChange={inputValue}
             className={css.phonebookInput}
             value={name}
@@ -83,6 +84,7 @@ function ContactForm() {
         <label className={css.phonebookLabel}>
           Number
           <Input
+            width="100%"
             value={number}
             onChange={inputValue}
             className={css.phonebookInput}
@@ -93,13 +95,17 @@ function ContactForm() {
             required
           />
         </label>
-        <Button className={css.phonebookBtn} type="submit">
+        <Button
+          colorScheme="linear-gradient(to right, #00b4db, #0083b0);"
+          className={css.phonebookBtn}
+          type="submit"
+        >
           Add contact
         </Button>
       </form>
       <Filter />
       <ContactList />
-    </>
+    </section>
   );
 }
 

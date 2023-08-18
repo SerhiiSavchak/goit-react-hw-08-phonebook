@@ -1,11 +1,14 @@
 .filterTitle {
-  font-size: 32px;
-  margin-bottom: 25px;
+  width: fit-content;
+  font-size: 36px;
+  margin: 0 auto;
+  margin-bottom: 45px;
 }
 .contactsLabel {
-  margin-bottom: 40px;
-  font-size: 500;
-  font-size: 18px;
+  margin: 0 auto;
+  margin-bottom: 60px;
+
+  font-size: 22px;
   display: flex;
   flex-direction: column;
 }

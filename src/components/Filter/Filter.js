@@ -19,8 +19,6 @@ function Filter() {
       <label className={css.contactsLabel}>
         Find contacts by name
         <Input
-          size="medium"
-          width="300px"
           name="filter"
           className={css.contactsInput}
           onChange={inputValue}

@@ -3,6 +3,7 @@ import { Input, Button } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/authOperations';
+import { Container } from 'components/Layout/Layout';
 
 function Login() {
   const dispatch = useDispatch();
@@ -36,33 +37,42 @@ function Login() {
   };
 
   return (
-    <form onSubmit={onFormSubmit} className={css.loginForm}>
-      <label className={css.loginLabel}>
-        Email:
-        <Input
-          onChange={inputValue}
-          value={email}
-          name="email"
-          size="medium"
-          width="300px"
-          type=" text"
-        />
-      </label>
-      <label className={css.loginLabel}>
-        Password:
-        <Input
-          name="password"
-          onChange={inputValue}
-          value={password}
-          size="medium"
-          width="300px"
-          type=" text"
-        />
-      </label>
-      <Button width="300px" colorScheme="blue" height="40px" type="submit">
-        Log in
-      </Button>
-    </form>
+    <Container>
+      <section className={css.loginSection}>
+        <form onSubmit={onFormSubmit} className={css.loginForm}>
+          <label className={css.loginLabel}>
+            Email:
+            <Input
+              onChange={inputValue}
+              value={email}
+              name="email"
+              size="medium"
+              width="300px"
+              type=" text"
+            />
+          </label>
+          <label className={css.loginLabel}>
+            Password:
+            <Input
+              name="password"
+              onChange={inputValue}
+              value={password}
+              size="medium"
+              width="300px"
+              type=" text"
+            />
+          </label>
+          <Button
+            width="300px"
+            colorScheme="linear-gradient(to right, #00b4db, #0083b0);"
+            height="40px"
+            type="submit"
+          >
+            Log in
+          </Button>
+        </form>
+      </section>
+    </Container>
   );
 }
 

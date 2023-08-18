@@ -1,17 +1,27 @@
 import css from './Navigation.module.css';
-import { getIsLoggedIn } from 'redux/selectors';
+import { getIsLoggedIn, getName } from 'redux/selectors';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/authOperations';
+import { Avatar, AvatarBadge } from '@chakra-ui/react';
+import styled from 'styled-components';
+
+export const StyledLink = styled(NavLink)`
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 250 linear;
+  &:hover {
+    color: white;
+  }
+`;
 
 function Navigation() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
+  const userName = useSelector(getName);
 
   const onLogOutClick = () => {
-    console.log(isLoggedIn);
-
     dispatch(logOut());
     navigate('/login');
   };
@@ -20,34 +30,41 @@ function Navigation() {
     <nav className={css.nav}>
       <ul className={css.navList} fontWeight="medium" fontSize="sm">
         <li className={css.navItem}>
-          <NavLink className={css.navLink} to="/">
+          <StyledLink className={css.navLink} to="/">
             Home
-          </NavLink>
+          </StyledLink>
         </li>
 
         <li className={css.navItem}>
-          <NavLink className={css.navLink} to="/contacts">
+          <StyledLink className={css.navLink} to="/contacts">
             Contacts
-          </NavLink>
+          </StyledLink>
         </li>
       </ul>
       {!isLoggedIn ? (
         <ul className={css.navList} fontWeight="medium" fontSize="sm">
           <li className={css.navItem}>
-            <NavLink className={css.navLink} to="/login">
+            <StyledLink className={css.navLink} to="/login">
               Log in
-            </NavLink>
+            </StyledLink>
           </li>
           <li className={css.navItem}>
-            <NavLink className={css.navLink} to="/register">
+            <StyledLink className={css.navLink} to="/register">
               Sign up
-            </NavLink>
+            </StyledLink>
           </li>
         </ul>
       ) : (
-        <button onClick={onLogOutClick} type="button">
-          Log out
-        </button>
+        <div className={css.navWrap}>
+          <p className={css.navText}>{userName}</p>
+          <Avatar className={css.navAvatar}>
+            <AvatarBadge boxSize="1.25em" bg="green.500" />
+          </Avatar>
+
+          <button className={css.navBtn} onClick={onLogOutClick} type="button">
+            Log out
+          </button>
+        </div>
       )}
     </nav>
   );
