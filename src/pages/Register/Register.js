@@ -69,6 +69,7 @@ function Register() {
           <label className={css.registerLabel}>
             Password:
             <Input
+              minLength="7"
               value={password}
               name="password"
               onChange={inputValue}
